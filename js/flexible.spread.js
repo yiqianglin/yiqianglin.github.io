@@ -8,7 +8,7 @@
     var tid;
     var flexible = lib.flexible || (lib.flexible = {});
     
-    //创建meta:vp,并根据设备屏幕像素比来设置dpr的值，设置scale =1/dpr,保留小数点后2位;
+    // 创建meta:vp,并根据设备屏幕像素比来设置dpr的值，设置scale =1/dpr,保留小数点后2位;
     // 当设置过meta标签之后，其根据其自定义的缩放放比来设置
     if (metaEl) {
         console.warn('将根据已有的meta标签来设置缩放比例');
@@ -16,6 +16,7 @@
         if (match) {
             scale = parseFloat(match[1]);
             dpr = parseInt(1 / scale);//获取屏幕像素比
+            alert("屏幕像素比:" + dpr + "");
         }
     } else if (flexibleEl) {
         var content = flexibleEl.getAttribute('content');
@@ -62,6 +63,7 @@
     //创建meta标签，设置初始比、最小比和最大比均为scale值，并将其插入到页面
     //设置了缩放比，那么相当于这个屏幕渲染在一个被放大的画布之上。
     if (!metaEl) {
+        alert("!metaEl");
         metaEl = doc.createElement('meta');
         metaEl.setAttribute('name', 'viewport');
         metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
