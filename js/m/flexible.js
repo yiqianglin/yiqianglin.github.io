@@ -14,6 +14,7 @@
         if (match) {
             scale = parseFloat(match[1]);
             dpr = parseInt(1 / scale);
+            console.log("dpr:", dpr);
         }
     } else if (flexibleEl) {
         var content = flexibleEl.getAttribute('content');
@@ -50,10 +51,13 @@
             dpr = 1;
         }
         scale = 1 / dpr;
+        console.log("scale:", scale);
     }
-
+    
+    console.log("页面设置的data-dpr:", dpr);
     docEl.setAttribute('data-dpr', dpr);
     if (!metaEl) {
+        console.log("if (!metaEl)");
         metaEl = doc.createElement('meta');
         metaEl.setAttribute('name', 'viewport');
         metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
@@ -76,6 +80,7 @@
         return flag; 
     }
     function refreshRem(){
+        console.log("refreshRem");
         var width = docEl.getBoundingClientRect().width;
         if (IsPC() && width < 2047) {
             width = width > 540 ? 540 : width;
@@ -87,10 +92,12 @@
     }
 
     win.addEventListener('resize', function() {
+        console.log("resize");
         clearTimeout(tid);
         tid = setTimeout(refreshRem, 300);
     }, false);
     win.addEventListener('pageshow', function(e) {
+        console.log('pageshow');
         if (e.persisted) {
             clearTimeout(tid);
             tid = setTimeout(refreshRem, 300);
@@ -98,9 +105,11 @@
     }, false);
 
     if (doc.readyState === 'complete') {
+        console.log('doc.readyState === complete');
         doc.body.style.fontSize = 14 * dpr + 'px';
     } else {
         doc.addEventListener('DOMContentLoaded', function(e) {
+            console.log('DOMContentLoaded');
             doc.body.style.fontSize = 14 * dpr + 'px';
         }, false);
     }
