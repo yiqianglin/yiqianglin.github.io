@@ -16,17 +16,19 @@
     <body>
         <img data-v-68f90c80="" src="http://store-30017.sz.gfp.tencent-cloud.com/201809/WebMD(1)/1300ca10-ba7c-11e8-828f-05883e9e4ecf_0.png" class="banner-img">
         <div id="container1"></div>
-        测试一下分享
-        <script>
-            var player = new Txplayer({
-  containerId: 'container1',
-  vid: 'r0018hmh1pa',
-  width: '100%',
-  height: 200
-});
-            setTimeout(function(){
-                player.destroy() 
-            }, 2000)
-            </script>
+  <link href="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
+  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
+  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
+  <video id="player-container-id" preload="auto" playsinline webkit-playsinline>
+  </video>
+        <script src="//baike-med-1256891581.file.myqcloud.com/yidian/production/common/js/zepto.1.2.0.min.js"></script>
+  <script>
+      var player = TCPlayer('player-container-id', { // player-container-id 为播放器容器ID，必须与html中一致
+      // fileID: '5285890785817339420', // 请传入需要播放的视频filID 必须
+      // appID: '1400185120' // 请传入点播账号的appID 必须
+      fileID: '7447398157015849771', // 请传入需要播放的视频filID 必须
+      appID: '1256993030'
+    })
+  </script>
     </body>
 </html>
