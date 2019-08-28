@@ -1,33 +1,32 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>test</title>
-        <meta name="viewport" content="width=device-width, user-scalable=1">
-        <meta http-equiv="x-ua-compatible" content="IE=8,9,10,edge" >
-        <meta name="description" content="test"/>
-         <!--<script src="./js/flexible.spread.js"></script> -->
-        <script src="./js/m/flexible.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/common.css" />
-        <link rel="stylesheet" href="./css/m/forshoulei.css">
-    </head>
-    <body>
-  <link href="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
-  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
-  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
-  <video id="player-container-id" preload="auto" playsinline webkit-playsinline>
-  </video>
-        <script src="//baike-med-1256891581.file.myqcloud.com/yidian/production/common/js/zepto.1.2.0.min.js"></script>
-  <script>
-      var player = TCPlayer('player-container-id', { // player-container-id 为播放器容器ID，必须与html中一致
-      // fileID: '5285890785817339420', // 请传入需要播放的视频filID 必须
-      // appID: '1400185120' // 请传入点播账号的appID 必须
-      fileID: '7447398157015849771', // 请传入需要播放的视频filID 必须
-      appID: '1256993030',
-        nativeControlsForTouch: true
-    })
-  </script>
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .btn {
+        display: inline-block;
+        height: 30px;
+        padding: 0 20px;
+        background: #999;
+        vertical-align: middle;
+        font-size: 10px;
+    }
+    .btn.ha::before {
+        content:'';
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+    <span class="btn">啦啦啦</span>
+    <span class="btn ha">啦啦啦</span>
+</body>
+
 </html>
