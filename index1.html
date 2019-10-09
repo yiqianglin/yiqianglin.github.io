@@ -7,12 +7,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0">
         <meta http-equiv="x-ua-compatible" content="IE=8,9,10,edge" >
         <!--<script src="./js/flexible.spread.js"></script>--> 
+        <script>
+            (function (document, window) {
+  var docEl = document.documentElement
+  var event = 'orientationchange' in window ? 'orientationchange' : 'resize'
+  var recalc = function () {
+    var size = 750
+    var zoom = docEl.clientWidth / size
+    docEl.style.fontSize = zoom > 1 ? '100px' : docEl.style.fontSize = 100 * zoom + 'px'
+  }
+  recalc()
+  if (!window.addEventListener) { return }
+  window.addEventListener(event, recalc, false)
+  window.addEventListener('DOMContentLoaded', recalc, false)
+})(document, window)
+
+        </script>
     </head>
     <body>
-        <img src="//baike-med-1256891581.file.myqcloud.com/kepu/production/static/img/qrcode.3cd607f.png" style="width: 200px; height: 200px;">
+        <img src="//baike-med-1256891581.file.myqcloud.com/kepu/production/static/img/qrcode.3cd607f.png" style="width: 1.2rem;height: 1.2rem;">
         <script>
             setTimeout(function(){
-                 window.history.replaceState({page: 1}, "VNK", "?VNK=1")
+                 // window.history.replaceState({page: 1}, "VNK", "?VNK=1")
             }, 2000)
         </script>
     </body>
