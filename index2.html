@@ -29,7 +29,7 @@
     <span class="btn ha">啦啦啦</span>
     
     <script>
-        console.log('1111111');
+        console.log('1111111----');
 
         (function(){function m(){function u(){return null}function l(a){return a?"object"===typeof a||"function"===typeof a:!1}function n(a){if(null!==a&&!l(a))throw new TypeError("Object prototype may only be an Object or null: "+a);}function v(a,c,A){function k(){}if(!l(a)||!l(c))throw new TypeError("Cannot create proxy with a non-object as target or handler");var g=c;c={get:null,set:null,apply:null,construct:null};for(var h in g){if(!(h in c))throw new TypeError("Proxy polyfill does not support trap '"+h+"'");c[h]=
 g[h]}"function"===typeof g&&(c.apply=g.apply.bind(g));g=B(a);var p=!1,q=!1;if("function"===typeof a){var e=function(){var b=this&&this.constructor===e,d=Array.prototype.slice.call(arguments);k(b?"construct":"apply");return b&&c.construct?c.construct.call(this,a,d):!b&&c.apply?c.apply(a,this,d):b?(d.unshift(a),new (a.bind.apply(a,d))):a.apply(this,d)};p=!0}else a instanceof Array?(e=[],q=!0):e=w||null!==g?C(g):{};var x=c.get?function(b){k("get");return c.get(this,b,e)}:function(b){k("get");return this[b]},
