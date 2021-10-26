@@ -27,22 +27,25 @@
 <body>
     <span class="btn">啦啦啦</span>
     <span class="btn ha">啦啦啦</span>
-</body>
     
+        
     <script src="./es6-proxy-polyfill.js"></scrpt>
-<script>
-const handler = {
-    get: function(obj, prop) {
-        return prop in obj ? obj[prop] : 37;
-    }
-};
+    <script>
+    const handler = {
+        get: function(obj, prop) {
+            return prop in obj ? obj[prop] : 37;
+        }
+    };
 
-const p = new Proxy({}, handler);
-p.a = 1;
-p.b = undefined;
+    const p = new Proxy({}, handler);
+    p.a = 1;
+    p.b = undefined;
 
-console.log(p.a, p.b);      // 1, undefined
-console.log('c' in p, p.c); // false, 37
-</script>
+    console.log(p.a, p.b);      // 1, undefined
+    console.log('c' in p, p.c); // false, 37
+    </script>
+    
+</body>
+
 
 </html>
