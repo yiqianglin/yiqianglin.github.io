@@ -1,60 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        .btn {
-            display: inline-block;
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+  <title>Tcplayer Demo</title>
+  <link href="https://web.sdk.qcloud.com/player/tcplayer/release/v4.5.2/tcplayer.min.css" rel="stylesheet">
+  <script src="https://web.sdk.qcloud.com/player/tcplayer/release/v4.5.2/libs/hls.min.0.13.2m.js"></script>
+  <script src="https://web.sdk.qcloud.com/player/tcplayer/release/v4.5.2/tcplayer.v4.5.2.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .tcplayer {
+      margin: 0 auto;
+    }
 
-            padding: 3.5px 20px;
-            background: #999;
-            vertical-align: middle;
-            font-size: 11px;
-        }
-        .btn.ha::before {
-            content:'';
-            height: 100%;
-            display: inline-block;
-            vertical-align: middle;
-        }
-    </style>
+    #player-container-id {
+      width: 640px;
+      height: 360px;
+    }
+
+    .tip-node {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: 5em;
+      left: 1em;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 4px;
+      padding: 5px 10px;
+
+    }
+
+    .tip-icon-close {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-left: 10px;
+      background-image: url(https://tcplayer-1306264703.cos.ap-nanjing.myqcloud.com/picture/icon-close.png);
+      background-size: cover;
+      cursor: pointer;
+    }
+    
+    .page-node {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-content {
+      text-align: center;
+    }
+
+    .page-content a{
+      display: flex;
+      width: 120px;
+      height: 28px;
+      border-radius: 14px;
+      color: #663d00;
+      background-image: linear-gradient(90deg,#ffdf89 0,#f2ca5b 100%);
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      margin: 0 auto;
+    }
+
+    .page-content #replay-btn::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      background: url(https://tcplayer-1306264703.cos.ap-nanjing.myqcloud.com/picture/icon-replay.png);
+      background-size: contain;
+    }
+
+    .page-content #replay-btn {
+      margin: 10px auto 0;
+    }
+
+
+  </style>
 </head>
-
 <body>
-    <span class="btn">啦啦啦</span>
-    <span class="btn ha">啦啦啦</span>
-    
-    <script>
-        console.log('1111111----');
 
-        (function(){function m(){function u(){return null}function l(a){return a?"object"===typeof a||"function"===typeof a:!1}function n(a){if(null!==a&&!l(a))throw new TypeError("Object prototype may only be an Object or null: "+a);}function v(a,c,A){function k(){}if(!l(a)||!l(c))throw new TypeError("Cannot create proxy with a non-object as target or handler");var g=c;c={get:null,set:null,apply:null,construct:null};for(var h in g){if(!(h in c))throw new TypeError("Proxy polyfill does not support trap '"+h+"'");c[h]=
-g[h]}"function"===typeof g&&(c.apply=g.apply.bind(g));g=B(a);var p=!1,q=!1;if("function"===typeof a){var e=function(){var b=this&&this.constructor===e,d=Array.prototype.slice.call(arguments);k(b?"construct":"apply");return b&&c.construct?c.construct.call(this,a,d):!b&&c.apply?c.apply(a,this,d):b?(d.unshift(a),new (a.bind.apply(a,d))):a.apply(this,d)};p=!0}else a instanceof Array?(e=[],q=!0):e=w||null!==g?C(g):{};var x=c.get?function(b){k("get");return c.get(this,b,e)}:function(b){k("get");return this[b]},
-D=c.set?function(b,d){k("set");c.set(this,b,d,e)}:function(b,d){k("set");this[b]=d},y={};f.getOwnPropertyNames(a).forEach(function(b){if(!((p||q)&&b in e)){var d=f.getOwnPropertyDescriptor(a,b);f.defineProperty(e,b,{enumerable:!!d.enumerable,get:x.bind(a,b),set:D.bind(a,b)});y[b]=!0}});h=!0;if(p||q){var E=f.setPrototypeOf||([].__proto__===Array.prototype?function(b,d){n(d);b.__proto__=d;return b}:u);g&&E(e,g)||(h=!1)}if(c.get||!h)for(var r in a)y[r]||f.defineProperty(e,r,{get:x.bind(a,r)});f.seal(a);
-f.seal(e);return A?{proxy:e,revoke:function(){a=null;k=function(b){throw new TypeError("Cannot perform '"+b+"' on a proxy that has been revoked");}}}:e}var f=Object,w=!!f.create||!({__proto__:null}instanceof f),C=f.create||(w?function(a){n(a);return{__proto__:a}}:function(a){function c(){}n(a);if(null===a)throw new SyntaxError("Native Object.create is required to create objects with null prototype");c.prototype=a;return new c}),B=f.getPrototypeOf||([].__proto__===Array.prototype?function(a){a=a.__proto__;
-return l(a)?a:null}:u);var t=function(a,c){if(void 0===(this&&this instanceof t?this.constructor:void 0))throw new TypeError("Constructor Proxy requires 'new'");return v(a,c)};t.revocable=function(a,c){return v(a,c,!0)};return t};var z="undefined"!==typeof process&&"[object process]"==={}.toString.call(process)||"undefined"!==typeof navigator&&"ReactNative"===navigator.product?global:self;z.Proxy||(z.Proxy=m(),z.Proxy.revocable=z.Proxy.revocable);})();
+<video id="player-container-id" preload="auto" playsinline webkit-playsinline>
+</video>
 
-    </script>
-    <script>
-            console.log('2222222');
-    var handler = {
-        get: function(obj, prop) {
-            return prop in obj ? obj[prop] : 37;
-        }
-    };
+<script>
+  var player = TCPlayer("player-container-id", { 
+    fileID: "3701925924406245944",
+    appID: "1500006438",
+    psign: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTUwMDAwNjQzOCwiZmlsZUlkIjoiMzcwMTkyNTkyNDQwNjI0NTk0NCIsImN1cnJlbnRUaW1lU3RhbXAiOjE2MzE3ODEyMzYsImV4cGlyZVRpbWVTdGFtcCI6MTkxNTg2NDQxNCwicGNmZyI6ImJhc2ljRHJtUHJlc2V0IiwidXJsQWNjZXNzSW5mbyI6eyJleHBlciI6MzAsInQiOiIxOTE1ODY0NDE0In19.F9gD5SidAoQPH4rDz4dr9-Z6DpoojOkHX_23kZPJ72A",
+    autoplay: false,
+  });
 
-    var p = new Proxy({}, handler);
-    p.a = 1;
-    p.b = undefined;
-console.log('3333333');
-    console.log(p.a, p.b);      // 1, undefined
-    console.log('c' in p, p.c); // false, 37
-    </script>
-    
+  player.one("playing", function() {
+    var tipNode = document.createElement("div");
+    tipNode.innerHTML = "可试看30秒，开通 VIP 观看完整视频";
+    tipNode.className = "tip-node";
+
+    var tipIconClose = document.createElement("i");
+    tipIconClose.className = "tip-icon-close";
+    tipIconClose.onclick = function() {
+      tipNode.remove();
+    }
+  
+    tipNode.appendChild(tipIconClose);
+    player.el_.appendChild(tipNode);
+  });
+
+
+  player.on("ended", function() {
+    var pageNode = document.createElement("div");
+      pageNode.className = "page-node";
+
+      pageNode.innerHTML = `<div class="page-content">
+          <p>试看结束，VIP会员可观看完整视频</p>
+          <a href="https://cloud.tencent.com/document/product/881/30818" target="_blank">开通VIP会员</a>
+          <button id="replay-btn">重新试看</button>
+        </div>
+      `;
+      
+      player.el_.appendChild(pageNode);
+
+      document.querySelector('#replay-btn').onclick = function() {
+        player.play();
+        pageNode.remove();
+      };
+  });
+
+</script>
 </body>
-
-
 </html>
