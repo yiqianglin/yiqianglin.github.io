@@ -1,2 +1,2 @@
 # yiqianglin.github.io
-github.io
+https://yiqianglin.github.io/
