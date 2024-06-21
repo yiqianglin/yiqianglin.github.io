@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world123');
+    </script>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <input type="text" id="text">
+    <button id="send">发送</button>
+    <script>
+        var ws = null;
+        var role = 'menber'
+        function getURLParameter(name) {
+            console.log('name', name)
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(window.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        let roomID = getURLParameter('roomID');
+        console.log('roomID', roomID)
+        function connectWebSocket(url, roomID, clientID, role) {
+            console.log('connectWebSocket', url + "?roomID=" + roomID + "&clientID=" + clientID + "&role=" + role)
+            ws = new WebSocket(url + "?roomID=" + roomID + "&clientID=" + clientID + "&role=" + role);
+
+            ws.onopen = function() {
+                console.log("Connected to WebSocket server");
+                ws.send(JSON.stringify({ type: "initial", content: "Hello, Server!" }));
+                // startPing(ws);
+            };
+
+            ws.onmessage = function(event) {
+                console.log("Received message: " + event.data);
+                var li = document.createElement('li');
+                li.textContent = 'Received: ' + event.data;
+                document.getElementById('messages').appendChild(li);
+            };
+
+            ws.onclose = function(e) {
+                console.log("Disconnected from WebSocket server");
+                console.log(e);
+                // 自动重连
+                // setTimeout(function() {
+                //     connectWebSocket(roomID, role);
+                // }, 1000);
+            };
+
+            ws.onerror = function(error) {
+                console.log("WebSocket error: ");
+                console.log(error)
+            };
+        }
+
+        setTimeout(() => {
+            url = 'ws://9.134.39.71:8001/ws/join'
+            connectWebSocket(url, roomID, 'client_bank', role)
+        }, 1000)
+        function startPing(ws) {
+            setInterval(function() {
+                if (ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify({ type: "ping" }));
+                }
+            }, 5000); // 每 5 秒发送一次 Ping 消息
+        }
+        send.onclick = function () {
+            let msg = document.getElementById("text").value?.trim()
+            if (msg && ws) {
+                ws.send(msg)
+                var li = document.createElement('li');
+                li.textContent = 'Sent: ' + msg;
+                document.getElementById('messages').appendChild(li);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+
