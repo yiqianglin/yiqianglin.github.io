@@ -24,6 +24,7 @@
       var btn = document.getElementById('send');
       btn.onclick = function() {
         alert('点击');
+        alert(window.__wxjs_environment)
         wx.miniProgram.getEnv(function(res) { alert(res.miniprogram) })
       }
 
