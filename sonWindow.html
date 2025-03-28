@@ -21,7 +21,7 @@
     这里是父元素
     <script>
       var btn = document.getElementById('send');
-      btn.onClick = function() {
+      btn.onclick = function() {
         alert('点击');
         wx.miniProgram.getEnv(function(res) { alert(res.miniprogram) })
       }
