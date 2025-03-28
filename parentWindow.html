@@ -8,6 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js"></script>
+    <style>
+      .iframe-dom {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
     <script>
     </script>
   </head>
@@ -16,7 +22,7 @@
     <input type="text" id="text">
     <button id="send">发送</button>
     这里是父元素
-    <iframe src="https://yiqianglin.github.io/sonWindow.html"></iframe>
+    <iframe class="iframe-dom" src="https://yiqianglin.github.io/sonWindow.html"></iframe>
     <script>
       var btn = document.getElementById('send');
       btn.onclick = function() {
